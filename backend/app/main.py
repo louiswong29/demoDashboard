@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import auth, projects
+import uvicorn
 
 app = FastAPI(title="Business Dashboard Demo")
 
@@ -19,3 +20,9 @@ app.include_router(projects.router, prefix="/api/projects", tags=["Projects"])
 @app.get("/")
 def root():
     return {"message": "Backend is running"}
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Render will inject PORT
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=False)
+
+
