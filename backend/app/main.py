@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.api import auth, projects
-import uvicorn
+import uvicorn, os
 
 app = FastAPI(title="Business Dashboard Demo")
 
